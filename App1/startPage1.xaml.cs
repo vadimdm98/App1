@@ -12,53 +12,76 @@ namespace App1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class startPage1 : ContentPage
     {
+        List<Page> pages = new List<Page>() { new Entry(), new Timer_page(), new BoxViev_Pages(), new Valgusfoor() ,new Snegovik_Page(), new Frame_Page()};
+        
+        List<string> tekstid = new List<string> { "Ava tekst leht", "Ava timer leht", "Ava box leht", "Ava valgusfoor leht", "Ava snegovik leht", "Ava frame leht" };
         public startPage1()
-        {
-            //InitializeComponent();
-            Button Entry_btn = new Button
-            {
-                Text = "Ava Entry leht",
-                TextColor = Color.Tomato,
-                BackgroundColor = Color.Violet
-            };
-            Button Timer_btn = new Button
-            {
-                Text = "Ava Timer leht",
-                TextColor = Color.Tomato,
-                BackgroundColor = Color.Violet
-            };
-            Button Box_btn = new Button
-            {
-                Text = "Ava Timer leht",
-                TextColor = Color.Tomato,
-                BackgroundColor = Color.Violet
-            };
+        
+       {
             StackLayout st = new StackLayout
 
             {
                 Orientation = StackOrientation.Vertical,
-                Children = { Entry_btn },
                 BackgroundColor = Color.Yellow
             };
+
+            for (int i = 0;i < pages.Count; i++)
+            {
+
+                Button button = new Button
+                {
+                    Text = tekstid[i],
+                    TabIndex = i,
+                    BackgroundColor = Color.Violet,
+                    TextColor = Color.Tomato,
+
+
+                };
+                st.Children.Add(button);
+                button.Clicked += Navig_funktsion;
+            }
+            //InitializeComponent();
+            //Button Entry_btn = new Button
+            //{
+            //    Text = "Ava Entry leht",
+            //    TextColor = Color.Tomato,
+            //    BackgroundColor = Color.Violet,
+            //    TabIndex = 0
+            //};
+            //Button Timer_btn = new Button
+            //{
+            //    Text = "Ava Timer leht",
+            //    TextColor = Color.Tomato,
+            //    BackgroundColor = Color.Violet,
+            //    TabIndex = 1
+            //};
+            //Button Box_btn = new Button
+            //{
+            //    Text = "Ava Timer leht",
+            //    TextColor = Color.Tomato,
+            //    BackgroundColor = Color.Violet,
+            //    TabIndex = 2
+            //};
+            //Button Valgusfoor_btn = new Button
+            //{
+            //    Text = "Ava Valgusfoor leht",
+            //    TextColor = Color.Tomato,
+            //    BackgroundColor = Color.Violet,
+            //    TabIndex = 3
+            //};
+            
             Content = st;
-            Entry_btn.Clicked += Entry_btn_Clicked;
-            Timer_btn.Clicked += Timer_btn_Clicked;
-            Box_btn.Clicked += Timer_btn_Clicked;
+            //Entry_btn.Clicked += Navig_funktsion;
+            //Timer_btn.Clicked += Navig_funktsion;
+            //Box_btn.Clicked += Navig_funktsion;
+
 
         }
-        private async void Entry_btn_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new startPage1());
-        }
 
-        private async void Timer_btn_Clicked(object sender, EventArgs e)
+        private async void Navig_funktsion (object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new startPage1());
-        }
-
-        private async void Box_btn_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new BoxViev_Pages());
+            Button btn=sender as Button;
+            await Navigation.PushAsync(pages[btn.TabIndex]);
         }
 
 
