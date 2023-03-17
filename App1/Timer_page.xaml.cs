@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,24 +10,22 @@ using Xamarin.Forms.Xaml;
 namespace App1
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Timer_page : ContentPage
+    public partial class Timer_Page : ContentPage
     {
-        public Timer_page()
+        public Timer_Page()
         {
             InitializeComponent();
         }
         bool on_off = false;
-        public async void ShowTime()
+        public async void Showtime()
         {
-            while (true)
+            while (on_off)
             {
                 lbl.Text = DateTime.Now.ToString("G");
                 await Task.Delay(1000);
-
             }
-
-
         }
+
         private void btn_Clicked(object sender, EventArgs e)
         {
             if (on_off)
@@ -38,10 +35,8 @@ namespace App1
             else
             {
                 on_off = true;
-                ShowTime();
+                Showtime();
             }
-
         }
-
     }
 }

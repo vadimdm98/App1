@@ -12,7 +12,7 @@ namespace App1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class startPage1 : ContentPage
     {
-        List<Page> pages = new List<Page>() { new Entry(), new Timer_page(), new BoxViev_Pages(), new Valgusfoor() ,new Snegovik_Page(), new Frame_Page()};
+        List<Page> pages = new List<Page>() { new Entry(), new Timer_Page(), new BoxViev_Pages(), new Valgusfoor() ,new Snegovik_Page(), new Frame_Page()};
         
         List<string> tekstid = new List<string> { "Ava tekst leht", "Ava timer leht", "Ava box leht", "Ava valgusfoor leht", "Ava snegovik leht", "Ava frame leht" };
         public startPage1()
